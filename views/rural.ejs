@@ -1,0 +1,145 @@
+
+  <%- include ('header'); %>
+
+    <div class="container mt-4 pt-3">
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-dark table-striped table-bordered">
+            <caption>Fonte: www.agricultura.pr.gov.br/terras</caption>
+            <thead>
+              <tr>
+                <th class="text-center" colspan="2">Valores médios de Terras Agrícolas | Terra Roxa - PR | 2021</th>
+              </tr>
+              <tr>
+                <th scope="col">Classes de Aptidão do solo</th>
+                <th scope="col">Área (Ha)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col">A-I — Lavoura Aptidão Boa</th>
+                <td scope="col">R$ 113.400,00</td>
+              </tr>
+              <tr>
+                <th scope="col">A-II — Lavoura Aptidão Regular</th>
+                <td scope="col">R$ 93.800,00</td>
+              </tr>
+              <tr>
+                <th scope="col">A-III — Lavoura Aptidão Restrita</th>
+                <td scope="col">R$ 75.100,00</td>
+              </tr>
+              <tr>
+                <th scope="col">A-IV — Terras Cultiváveis Ocasionalmente</th>
+                <td scope="col">R$ 54.300,00</td>
+              </tr>
+              <tr>
+                <th scope="col">B-VI — Pastagem Plantada</th>
+                <td scope="col">R$ 33.200,00</td>
+              </tr>
+              <tr>
+                <th scope="col">B-VII — Silvicultura ou Pastagem Natural</th>
+                <td scope="col">R$ 23.900,00</td>
+              </tr>
+              <tr>
+                <th scope="col">C-VIII — Preservação da Fauna ou Flora</th>
+                <td scope="col">R$ 12.700,00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-5">
+          <div class="input-group mb-3">
+            <select class="form-select" id="inputGroupSelect1">
+              <option selected>Escolha o tipo de terra...</option>
+              <option value="1">A-I -> Lavoura Aptidão Boa</option>
+              <option value="2">A-II -> Lavoura Aptidão Regular</option>
+              <option value="3">A-III -> Lavoura Aptidão Restrita</option>
+              <option value="4">A-IV -> Terras Cultiváveis Ocasionalmente</option>
+              <option value="5">B-VI -> Pastagem Plantada</option>
+              <option value="6">B-VII -> Silvicultura ou Pastagem Natural</option>
+              <option value="7">C-VIII -> Preservação da Fauna ou Flora</option>
+            </select>
+            <input type="text" class="form-control" id="inputText1" placeholder="Área (Ha)">
+          </div>
+
+          <div class="input-group mb-3">
+            <select class="form-select" id="inputGroupSelect2">
+              <option selected>Escolha o tipo de terra...</option>
+              <option value="1">A-I -> Lavoura Aptidão Boa</option>
+              <option value="2">A-II -> Lavoura Aptidão Regular</option>
+              <option value="3">A-III -> Lavoura Aptidão Restrita</option>
+              <option value="4">A-IV -> Terras Cultiváveis Ocasionalmente</option>
+              <option value="5">B-VI -> Pastagem Plantada</option>
+              <option value="6">B-VII -> Silvicultura ou Pastagem Natural</option>
+              <option value="7">C-VIII -> Preservação da Fauna ou Flora</option>
+            </select>
+            <input type="text" class="form-control" id="inputText2" placeholder="Área (Ha)">
+          </div>
+
+          <div class="input-group mb-3">
+            <select class="form-select" id="inputGroupSelect3">
+              <option selected>Escolha o tipo de terra...</option>
+              <option value="1">A-I -> Lavoura Aptidão Boa</option>
+              <option value="2">A-II -> Lavoura Aptidão Regular</option>
+              <option value="3">A-III -> Lavoura Aptidão Restrita</option>
+              <option value="4">A-IV -> Terras Cultiváveis Ocasionalmente</option>
+              <option value="5">B-VI -> Pastagem Plantada</option>
+              <option value="6">B-VII -> Silvicultura ou Pastagem Natural</option>
+              <option value="7">C-VIII -> Preservação da Fauna ou Flora</option>
+            </select>
+            <input type="text" class="form-control" id="inputText3" placeholder="Área (Ha)">
+          </div>
+
+          <button class="btn btn-secondary" type="button" onclick="calcularValor()">Calcular</button>
+          <p class="text-white mt-3 custom-size">Valor Calculado: <strong id="resultado-rural" class="text-white">R$ 0.000,00</strong></p>
+          
+        </div>
+
+        <hr/>
+
+        <div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="input-group mt-2 mb-3 conversao">
+                <span class="input-group-text bg-secondary text-white">Hectare(s)</span>
+                <input type="text" class="form-control" id="input-ha" placeholder="Area em hectares (Ha)" aria-label="Area em hectares" oninput="conversorAreaHa()">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="input-group mt-2 mb-3 conversao">
+                <span class="input-group-text bg-secondary text-white">Alqueire(s) Paulista</span>
+                <input type="text" class="form-control" id="input-alq" placeholder="Area em alqueire(s)" aria-label="Area em alqueires" oninput="conversorAreaAlq()">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="input-group mt-2 mb-3 conversao">
+                <span class="input-group-text bg-secondary text-white">Metros quadrados</span>
+                <input type="text" class="form-control" id="input-m2" placeholder="Area em M²" aria-label="Area em Metros quadrados" oninput="conversorAreaMetro()">
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      
+      
+    </div>
+    <script src="js/rural.js"></script>
+    <script src="js/vanilla-masker.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <%- include ('footer'); %>
+  </body>
+</html>

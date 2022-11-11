@@ -1,0 +1,23 @@
+.bg-custom{
+    background-color: #2b2b2b;
+}
+
+.my-footer{
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin: 1rem 0 1rem 0;
+}
+
+.custom-size{
+    font-size: 26px;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
