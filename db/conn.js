@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const cli = require('cli-color')
 
-mongoose.connect("mongodb+srv://admin:admin@cluster0.sy8wpn9.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://admin:admin@cluster0.sy8wpn9.mongodb.net/?retryWrites=true&w=majority?directConnection=true");
 
 const userSchema = new mongoose.Schema({
   username: String,
@@ -24,5 +24,5 @@ const userSchemaValorVenal = new mongoose.Schema({
 }, { collection: 'valorVenal' }
 );
 
-module.exports = { Mongoose: mongoose, UserSchema: userSchema,  UserSchemaValorVenal: userSchemaValorVenal}
+module.exports = { Mongoose: mongoose, UserSchema: userSchema,  UserSchemaValorVenal: userSchemaValorVenal }
 

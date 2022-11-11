@@ -99,7 +99,7 @@ app.post('/valorvenal', async (req, res) => {
 
 app.listen(port, () => {
   console.log(clc.green(`Servidor rodando na porta ${port}`));
-
+  console.log(`Local: https://localhost:${port}`);
 });
 
 
