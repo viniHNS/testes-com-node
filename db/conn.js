@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const cli = require('cli-color')
 
-mongoose.connect("mongodb+srv://admin:admin@cluster0.sy8wpn9.mongodb.net/?retryWrites=true&w=majority?directConnection=true");
+mongoose.connect("mongodb+srv://admin:admin@cluster0.sy8wpn9.mongodb.net/?retryWrites=true&w=majority");
 
 const userSchema = new mongoose.Schema({
   username: String,
@@ -21,8 +21,28 @@ const userSchemaValorVenal = new mongoose.Schema({
   telefone: String,
   cpf: String,
   situacao: String
-}, { collection: 'valorVenal' }
-);
+}, { collection: 'valorVenal' });
 
-module.exports = { Mongoose: mongoose, UserSchema: userSchema,  UserSchemaValorVenal: userSchemaValorVenal }
+const schemaIsencao = new mongoose.Schema({
+  requerente: String,
+  cpf: String,
+  rg: String,
+  sexo: String,
+  telefone: String,
+  cadImob: Number,
+  endereco: String,
+  tipoBeneficio: String,
+  valorBeneficio: String,
+  estadoCivil: String,
+  conjugeBeneficio: String,
+  unicoImovel: Boolean,
+  possuiDebito: Boolean,
+  debitos: String,
+  resideImovel: Boolean,
+  anoIsencao: Number
+}, { collection: 'isencao'});
+
+
+
+module.exports = { Mongoose: mongoose, UserSchema: userSchema,  UserSchemaValorVenal: userSchemaValorVenal, SchemaIsencao: schemaIsencao }
 

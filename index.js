@@ -60,7 +60,7 @@ app.patch('/valorvenal:id', async (req, res) => {
 
 //Rota Valor venal urbano cadastro POST
 
-app.post('/valorvenal', async (req, res) => {
+app.post('/valorvenal', async (req, res, next) => {
 
   const nome = req.body.nome;
   const endereco = req.body.endereco;
@@ -95,11 +95,71 @@ app.post('/valorvenal', async (req, res) => {
 
 });
 
+app.get('/isencao', async (req, res) => {
+
+  //consulta BD
+  const isencao = db.Mongoose.model('isencao', db.SchemaIsencao, 'isencao');
+  const consultaIsencao = await isencao.find({}).lean().exec();
+  //-----------
+  res.render('isencao', { consultaIsencao });
+})
+
+app.post('/isencao', async (req, res, next) => {
+
+  const requerente = req.body.requerente;
+  const endereco = req.body.endereco;
+  const cadImob = req.body.cadImob;
+  const telefone = req.body.telefone;
+  const sexo = req.body.sexo;
+  const anoIsencao = req.body.anoIsencao;
+  const cpf = req.body.cpf;
+  const rg = req.body.rg;
+  const tipoBeneficio = req.body.tipoBeneficio;
+  const valorBeneficio = req.body.valorBeneficio;
+  const estadoCivil = req.body.estadoCivil;
+  const conjugeBeneficio = req.body.conjugeBeneficio;
+  const unicoImovel = req.body.unicoImovel;
+  const possuiDebito = req.body.possuiDebito;
+  const debitos = req.body.debitos;
+  const resideImovel = req.body.resideImovel;
+
+
+  
+
+
+ /* if(req.body.situacao == "1"){
+    situacao = "Em análise"
+  }
+  if(req.body.situacao == "2"){
+    situacao = "Pronto"
+  }
+  if(req.body.situacao == "3"){
+    situacao = "Entregue"
+  }*/
+
+  const Isencao = db.Mongoose.model('isencao', db.SchemaIsencao, 'isencao');
+  const isencao = new Isencao({ requerente, endereco, cadImob, telefone, sexo, anoIsencao, cpf, rg, tipoBeneficio, valorBeneficio, estadoCivil, conjugeBeneficio, unicoImovel, possuiDebito, debitos, resideImovel, anoIsencao});
+  
+  try {
+    await isencao.save();
+    res.redirect('/isencao');
+  } catch (err) {
+    next(err);
+  }
+
+});
+
+
+
 //---------------------------
 
 app.listen(port, () => {
+  console.log("");
+  console.log(clc.green('----------------------------'));
   console.log(clc.green(`Servidor rodando na porta ${port}`));
-  console.log(`Local: https://localhost:${port}`);
+  console.log(clc.green(`Local: https://localhost:${port}`));
+  console.log(clc.green('----------------------------'));
+  console.log("");
 });
 
 
