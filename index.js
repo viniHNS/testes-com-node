@@ -49,13 +49,16 @@ app.get('/valorvenal', async (req, res) => {
 })
 //----------------------
 
-app.patch('/valorvenal:id', async (req, res) => {
+app.post('/valorvenal/:id', async (req, res) => {
 
   //consulta BD
   const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
-  const consulta = await valorVenal.find({}).lean().exec();
+  
+  let id = req.params.id;
+  await valorVenal.findByIdAndRemove(id).exec();
+  console.log(id);
   //-----------
-  res.redirect('valorVenal', { consulta });
+  res.redirect('valorVenal');
 })
 
 //Rota Valor venal urbano cadastro POST
@@ -73,6 +76,8 @@ app.post('/valorvenal', async (req, res, next) => {
   const telefone = req.body.telefone;
   const cpf = req.body.cpf;
 
+  console.log(req.body.situacao);
+
   if(req.body.situacao == "1"){
     situacao = "Em análise"
   }
@@ -84,8 +89,9 @@ app.post('/valorvenal', async (req, res, next) => {
   }
 
   const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
-  const valorvenal = new valorVenal({ nome, endereco, lote, quadra, area, bairro, cadImob, finalidade, telefone, cpf, situacao });
+  const valorvenal = new valorVenal({ nome, endereco, lote, quadra, area, bairro, cadImob, finalidade, telefone, cpf});
   
+
   try {
     await valorvenal.save();
     res.redirect('/valorvenal');
