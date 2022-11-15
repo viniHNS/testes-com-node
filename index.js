@@ -3,7 +3,6 @@ const path = require('path');
 const clc = require('cli-color');
 const mongoose = require('mongoose');
 const db = require('./db/conn');
-
 const app = express();
 const port = 3000;
 
@@ -37,7 +36,7 @@ app.get('/rural', (req, res) => {
 })
 //----------------------
 
-//Rota Valor venal urbano
+//Rota Valor venal urbano GET
 app.get('/valorvenal', async (req, res) => {
 
   //consulta BD
@@ -45,21 +44,10 @@ app.get('/valorvenal', async (req, res) => {
   const consulta = await valorVenal.find({}).lean().exec();
   //-----------
   
-  res.render('valorVenal', { consulta });
+  res.render('valorVenal', { consulta } );
 })
 //----------------------
 
-app.post('/valorvenal/:id', async (req, res) => {
-
-  //consulta BD
-  const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
-  
-  let id = req.params.id;
-  await valorVenal.findByIdAndRemove(id).exec();
-  console.log(id);
-  //-----------
-  res.redirect('valorVenal');
-})
 
 //Rota Valor venal urbano cadastro POST
 
@@ -75,8 +63,11 @@ app.post('/valorvenal', async (req, res, next) => {
   const finalidade = req.body.finalidade;
   const telefone = req.body.telefone;
   const cpf = req.body.cpf;
+  let valor = req.body.valorAvaliacao;
 
-  console.log(req.body.situacao);
+  if(req.body.valor == undefined || req.body.valor == NaN || req.body.valor == ""){
+    valor = "Vistoria"
+  }
 
   if(req.body.situacao == "1"){
     situacao = "Em análise"
@@ -89,7 +80,7 @@ app.post('/valorvenal', async (req, res, next) => {
   }
 
   const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
-  const valorvenal = new valorVenal({ nome, endereco, lote, quadra, area, bairro, cadImob, finalidade, telefone, cpf});
+  const valorvenal = new valorVenal({ nome, endereco, lote, quadra, area, bairro, cadImob, finalidade, telefone, cpf, situacao, valor});
   
 
   try {
@@ -100,6 +91,19 @@ app.post('/valorvenal', async (req, res, next) => {
   }
 
 });
+
+app.post('/valorvenaldel/:id', async (req, res) => {
+
+  //consulta BD
+  const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
+  
+  let id = req.params.id;
+  await valorVenal.findByIdAndRemove(id).exec();
+  //-----------
+  res.redirect('/valorVenal');
+})
+
+
 
 app.get('/isencao', async (req, res) => {
 
@@ -155,17 +159,14 @@ app.post('/isencao', async (req, res, next) => {
 
 });
 
-
-
 //---------------------------
 
 app.listen(port, () => {
   console.log("");
-  console.log(clc.green('----------------------------'));
-  console.log(clc.green(`Servidor rodando na porta ${port}`));
-  console.log(clc.green(`Local: https://localhost:${port}`));
-  console.log(clc.green('----------------------------'));
+  console.log(clc.white('----------------------------------'));
+  console.log(clc.blue(`Servidor rodando na porta ${port}`));
+  console.log(clc.blue(`Local: https://localhost:${port}`));
+  console.log(clc.white('----------------------------------'));
   console.log("");
 });
-
 
