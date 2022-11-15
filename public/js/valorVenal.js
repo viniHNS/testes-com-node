@@ -18,4 +18,10 @@ var tel = document.querySelector('#input-telefone');
 VMasker(tel).maskPattern(telMask[0]);
 tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
 
-
+VMasker(document.querySelector("#input-valor-avaliacao")).maskMoney({
+    precision: 2,
+    separator: ',',
+    delimiter: '.',
+    unit: 'R$',
+    zeroCents: false
+  });

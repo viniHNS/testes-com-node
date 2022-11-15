@@ -96,11 +96,25 @@ app.post('/valorvenaldel/:id', async (req, res) => {
 
   //consulta BD
   const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
-  
+
   let id = req.params.id;
   await valorVenal.findByIdAndRemove(id).exec();
   //-----------
   res.redirect('/valorVenal');
+})
+
+app.post('/valorvenaledit/:id', async (req, res) => {
+
+  //consulta BD
+  const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
+  let id = req.params.id;
+  const consulta = await valorVenal.findById(id).lean().exec();
+
+  
+
+  
+  //-----------
+  res.render('/valorVenal');
 })
 
 
