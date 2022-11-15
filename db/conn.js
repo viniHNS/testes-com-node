@@ -20,7 +20,8 @@ const userSchemaValorVenal = new mongoose.Schema({
   finalidade: String,
   telefone: String,
   cpf: String,
-  situacao: String
+  situacao: String,
+  valor: String
 }, { collection: 'valorVenal' });
 
 const schemaIsencao = new mongoose.Schema({
