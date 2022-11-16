@@ -1,0 +1,48 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.titulo{
+    text-align: center;
+    padding-top: 1rem;
+    font-size: 20px;
+    font-style: italic;
+    
+}
+
+.items{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.requerimento{
+    padding-top: 0.3rem;
+    text-align: justify;
+}
+
+.nestes-termos{
+    text-align: center;
+}
+
+.nestes-termos p{
+   margin: 0.3rem;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#data{
+    text-align: right;
+    margin-top: 3rem;
+    margin-bottom: 7rem;
+}
+
+.assinatura{
+    text-align: center;
+}
+
+
+
