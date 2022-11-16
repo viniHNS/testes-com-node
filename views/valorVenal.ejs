@@ -9,7 +9,9 @@
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Nome<span style="color: #ff0000;">*</span></span>
             <input type="text" class="form-control" id="input-contribuinte" placeholder="Nome do requerente"
-              aria-label="Nome do requerente" name="nome"/>
+              aria-label="Nome do requerente" name="nome" value="<<% if (consulta.nome) { %>
+               
+              <% } %>"/>
           </div>
         </div>
         <div class="col-md-4 cpf">

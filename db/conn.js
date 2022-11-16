@@ -14,7 +14,7 @@ const userSchemaValorVenal = new mongoose.Schema({
   endereco: String,
   lote: Number,
   quadra: Number,
-  area: Number,
+  area: String,
   bairro: String,
   cadImob: Number,
   finalidade: String,

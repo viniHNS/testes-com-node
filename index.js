@@ -114,7 +114,8 @@ app.post('/valorvenaledit/:id', async (req, res) => {
   let id = req.params.id;
   const consulta = await valorVenal.findById(id).lean().exec();
   //-----------
-  res.render('/valorVenal');
+  
+  res.render('/valorVenal', { consulta });
 })
 
 
