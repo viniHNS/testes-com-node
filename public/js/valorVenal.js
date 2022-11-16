@@ -22,6 +22,5 @@ VMasker(document.querySelector("#input-valor-avaliacao")).maskMoney({
     precision: 2,
     separator: ',',
     delimiter: '.',
-    unit: 'R$',
     zeroCents: false
   });

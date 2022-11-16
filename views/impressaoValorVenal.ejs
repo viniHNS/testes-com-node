@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/valorVenal/style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css"/>
+    <title>Impressão - Valor Venal Urbano</title>
+</head>
+
+<body class="A4">
+    <section class="sheet padding-25mm">
+      <p>
+        EXMO. SR PREFEITO MUNICIPAL DE TERRA ROXA - PR <br />
+        ESTADO DO PARANA
+      </p>
+      <p class="titulo"><strong>REQUERIMENTO</strong></p>
+      <div class="requerimento">
+        <p>
+          <span id="contribuinte"><%= consultaPrint.nome %> </span> CPF N°
+          <span id="documento"><%= consultaPrint.cpf %> </span>, Pelo presente vem mui respeitosamente
+          requerer de V. Excia, mande expedir
+          <strong>DECLARAÇÃO DE VALOR VENAL</strong>, referente ao imóvel
+        </p>
+      </div>
+      <ul class="items">
+        <li><strong>ENDEREÇO: </strong><span id="item-endereco"><%= consultaPrint.endereco %></span></li>
+        <li><strong>LOTE: </strong><span id="item-lote"><%= consultaPrint.lote %></span></li>
+        <li><strong>QUADRA: </strong> <span id="item-quadra"><%= consultaPrint.quadra %></span></li>
+        <li><strong>ÁREA: </strong><span id="item-area"><%= consultaPrint.area %></span></li>
+        <li><strong>BAIRRO: </strong><span id="item-bairro"><%= consultaPrint.bairro %></span></li>
+        <li><strong>FINALIDADE: </strong><span id="item-finalidade"><%= consultaPrint.finalidade %></span></li>
+        <li><strong>TELEFONE: </strong><span id="item-telefone"><%= consultaPrint.telefone %></span></li>
+      </ul>
+
+      <span class="nestes-termos">
+        <p><strong>Neste Termos</strong></p>
+        <p><strong>P. Deferimento</strong></p>
+      </span>
+
+      <p id="data">Terra Roxa - Pr, <span id="data-moment"></span></p>
+
+      <span class="assinatura">
+        <p>________________________________________________</p>
+        <p>Solicitante</p>
+      </span>
+      
+    </section>
+    <script src="/js/vanilla-masker.js"></script>
+    <script src="/js/moment.js"></script>
+    <script src="/js/valorVenalPrint.js"></script>
+  </body>
+</html>

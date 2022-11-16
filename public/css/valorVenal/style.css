@@ -1,5 +1,4 @@
 .form-del{
-    
     background: none;
 }
 
@@ -7,3 +6,22 @@
     background: none;
     border: none;
 }
+
+.form-edit{
+    background: none;
+}
+
+.form-edit button{
+    background: none;
+    border: none;
+}
+
+.form-print{
+    background: none;
+}
+
+.form-print button{
+    background: none;
+    border: none;
+}
+
