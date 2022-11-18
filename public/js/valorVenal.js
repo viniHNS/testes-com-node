@@ -1,4 +1,3 @@
-
 function inputHandler(masks, max, event) {
     var c = event.target;
     var v = c.value.replace(/\D/g, '');
@@ -24,3 +23,9 @@ VMasker(document.querySelector("#input-valor-avaliacao")).maskMoney({
     delimiter: '.',
     zeroCents: false
   });
+
+function del(){
+  let excluir = document.querySelector(".form-del");
+
+  
+}

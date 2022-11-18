@@ -1,0 +1,117 @@
+<%- include ('header'); %>
+
+<div class="container mt-3 pt-3">
+    <form action="<%= `/valorvenaledit/${consulta._id}` %> " method="post"> 
+        <div class="row"> 
+            <div class="col-md-8 contribuinte">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Nome<span style="color: #ff0000;">*</span></span>
+                    <input type="text" class="form-control" id="input-contribuinte" placeholder="Nome do requerente"
+                        aria-label="Nome do requerente" name="nome" value="<%= consulta.nome %> " />
+                </div>
+            </div>
+            <div class="col-md-4 cpf">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">CPF</span>
+                    <input type="text" class="form-control" id="input-cpf"
+                        placeholder="Certificado de Pessoa Fisica - CPF" aria-label="Certificado de Pessoa Fisica - CPF"
+                        name="cpf" value="<%= consulta.cpf %>"/>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="input-group mb-3 endereco">
+                    <span class="input-group-text" id="basic-addon4">Endereço</span>
+                    <input type="text" class="form-control" id="input-endereco" placeholder="Endereço"
+                        aria-label="Endereço" name="endereco" value="<%= consulta.endereco %>"/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="input-group mb-3 cadImob">
+                    <span class="input-group-text" id="basic-addon4">Cadastro Imobiliario</span>
+                    <input type="text" class="form-control" id="input-cad-imob" placeholder="Cadastro Imob."
+                        aria-label="Cadastro Imobiliario" name="cadImob" value="<%= consulta.cadImob %>"/>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="input-group mb-3 valorAvaliacao">
+                    <span class="input-group-text" id="basic-addon4">Valor (R$)</span>
+                    <input type="text" class="form-control" id="input-valor-avaliacao" placeholder="Valor da avaliação"
+                        aria-label="Cadastro Imobiliario" name="valorAvaliacao" value="<%= consulta.valor %>"/>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-4 quadra">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon5">Quadra</span>
+                    <input type="text" class="form-control" id="input-quadra" placeholder="Numero da quadra"
+                        aria-label="Numero da quadra" name="quadra" value="<%= consulta.quadra %>"/>
+                </div>
+            </div>
+            <div class="col-md-4 lote">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon6">Lote</span>
+                    <input type="text" class="form-control" id="input-lote" placeholder="Numero do Lote"
+                        aria-label="Numero do Lote" name="lote" value="<%= consulta.lote %>">
+
+                </div>
+            </div>
+            <div class="col-md-4 bairro">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon7">Bairro</span>
+                    <input type="text" class="form-control" id="input-bairro" placeholder="Bairro" aria-label="Bairro"
+                        name="bairro" value="<%= consulta.bairro %>"/>
+                </div>
+            </div>
+
+            <div class="col-md-2 area">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon8">Área</span>
+                    <input type="text" class="form-control" id="input-area" placeholder="Área do imóvel"
+                        aria-label="Área do imóvel" name="area" value="<%= consulta.area %>"/>
+                </div>
+            </div>
+
+            <div class="col-md-6 finalidade">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon9">Finalidade</span>
+                    <input type="text" class="form-control" id="input-finalidade" placeholder="Finalidade requerimento"
+                        aria-label="Finalidade" name="finalidade" value="<%= consulta.finalidade %>"/>
+                </div>
+            </div>
+
+            <div class="col-md-4 telefone">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon10">Telefone</span>
+                    <input type="text" class="form-control" id="input-telefone" placeholder="Telefone Contribuinte"
+                        aria-label="Telefone" name="telefone" value="<%=consulta.telefone%>" />
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <select class="form-select" id="inputGroupSelect1" name="situacao">
+                    <option selected value="1">Em análise</option>
+                    <option value="2">Pronto</option>
+                    <option value="3">Entregue</option>
+                </select>
+            </div>
+
+        </div>
+        <input class="btn btn-secondary" type="submit" value="Alterar" />
+        <form action="/valorvenal" method="get">
+            <input class="btn btn-secondary" type="submit" value="Cancelar" />
+        </form>
+    </form>
+    <hr>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"></script>
+    <script src="/js/vanilla-masker.js"></script>
+    <script src="/js/valorVenal.js"></script>
+    </body>
+ </div>
+</html>

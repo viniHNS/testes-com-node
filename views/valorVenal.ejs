@@ -9,9 +9,7 @@
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Nome<span style="color: #ff0000;">*</span></span>
             <input type="text" class="form-control" id="input-contribuinte" placeholder="Nome do requerente"
-              aria-label="Nome do requerente" name="nome" value="<<% if (consulta.nome) { %>
-               
-              <% } %>"/>
+              aria-label="Nome do requerente" name="nome"/>
           </div>
         </div>
         <div class="col-md-4 cpf">
@@ -151,8 +149,8 @@
             <td><%=valorvenal.situacao  %> </td>
             
             <td><%=valorvenal.valor  %> </td>
-            <td class="d-flex gap-3 justify-content-center"><form class="form-edit" action="<%= `/valorvenaledit/${valorvenal._id}` %>" method="get"><button type="submit"><i class="fa-solid fa-pencil text-white"></i></button></form>
-              <form class="form-print" action="<%= `/valorvenalprint/${valorvenal._id}` %>" method="get"><button type="submit" formtarget="_blank"><i class="fa-solid fa-print text-white"></i></button></form><form class="form-del" action="<%= `/valorvenaldel/${valorvenal._id}` %>" method="post"><button type="submit"><i class="fa-solid fa-trash text-danger"></i></button></form>
+            <td class="d-flex gap-3 justify-content-center"><form class="form-edit" action="<%= `/valorvenaledit/${valorvenal._id}` %>" method="get"><button  type="submit"><i class="fa-solid fa-pencil text-white"></i></button></form>
+              <form class="form-print" action="<%= `/valorvenalprint/${valorvenal._id}` %>" method="get"><button type="submit" formtarget="_blank"><i class="fa-solid fa-print text-white"></i></button></form><form class="form-del" action="<%= `/valorvenaldel/${valorvenal._id}` %>" method="post"><button class="button-del" type="submit"><i class="fa-solid fa-trash text-danger"></i></button></form>
             </td>
             
           </tr>
@@ -166,5 +164,6 @@
       crossorigin="anonymous"></script>
     <script src="js/vanilla-masker.js"></script>
     <script src="js/valorVenal.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </body>
 </html>
