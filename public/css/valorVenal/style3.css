@@ -15,11 +15,12 @@
     font-size: 26px;
     margin-bottom: 2rem;
     margin-top: 0;
+    text-decoration: underline;
 }
 
 .texto {
     text-indent: 12rem;
-    font-size: 21px;
+    font-size: 20px;
     text-align: justify;
     line-height: 2rem;
     margin-bottom: 3rem;
@@ -27,7 +28,7 @@
 
 #data{
     text-align: start;
-    font-size: 21px;
+    font-size: 20px;
     margin-top: 5rem;
     margin-bottom: 7rem;
 }
@@ -37,16 +38,23 @@
 }
 
 .assinatura .cargo1{
-    margin-bottom: 8px;
+    margin-bottom: 3px;
 }
 
 .assinatura .cargo2{
-    margin-top: 8px;
+    margin-top: 3px;
 }
 
 .cargo1, .cargo2{
     text-align: center;
+}
+
+.cargo1{
     font-size: 21px;
+}
+
+.cargo2{
+    font-size: 18px;
 }
 
 

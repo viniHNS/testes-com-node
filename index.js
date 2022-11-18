@@ -112,6 +112,12 @@ app.post('/valorvenal', async (req, res, next) => {
     cargo = "Fiscal Tributário";
   }
 
+  if(valor == ""){
+    valor = 0;
+  } else {
+    valor = req.body.valorAvaliacao;
+  }
+
 
 
   const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
@@ -202,6 +208,24 @@ app.post('/valorvenaledit/:id', async (req, res, next) => {
     situacao = "Entregue"
   }
   consulta.situacao = situacao;
+
+  if(req.body.responsavel == "1" && req.body.situacao != "-1"){
+    responsavel = "DAIANA PRISCILA KUELKAMP ROSA";
+    cargo = "Depto. de Tributação";
+  }
+
+  if(req.body.responsavel == "2" && req.body.situacao != "-1"){
+    responsavel = "HAROLDO BREHM";
+    cargo = "Depto. de Finanças";
+  }
+  
+  if(req.body.responsavel == "3" && req.body.situacao != "-1"){
+    responsavel = "HAROLDO DE LIMA";
+    cargo = "Fiscal Tributário";
+  }
+
+  consulta.responsavel = responsavel;
+  consulta.cargo = cargo;
 
   try {
     await consulta.save();

@@ -3,28 +3,32 @@
   <div class="container mt-4">
     <p class="text-white">Valor Venal Urbano</p>
 
-    <form action="/valorvenal" method="post">
+    <form id="form-valor-venal" action="/valorvenal" method="post">
       <div class="row">
         <div class="col-md-8 contribuinte">
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Nome<span style="color: #ff0000;">*</span></span>
+            <span class="input-group-text has-validation" id="basic-addon1">Nome<span style="color: #ff0000;">*</span></span>
             <input type="text" class="form-control" id="input-contribuinte" placeholder="Nome do requerente"
               aria-label="Nome do requerente" name="nome"/>
+              <div class="invalid-feedback">Você precisa digitar o nome do requerente</div>
           </div>
+          
         </div>
         <div class="col-md-4 cpf">
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">CPF</span>
+            <span class="input-group-text has-validation" id="basic-addon3">CPF</span>
             <input type="text" class="form-control" id="input-cpf" placeholder="Certificado de Pessoa Fisica - CPF"
               aria-label="Certificado de Pessoa Fisica - CPF" name="cpf" />
+            <div class="invalid-feedback">Você precisa digitar o CPF do requerente</div>
           </div>
         </div>
 
         <div class="col-md-12">
           <div class="input-group mb-3 endereco">
-            <span class="input-group-text" id="basic-addon4">Endereço</span>
+            <span class="input-group-text has-validation" id="basic-addon4">Endereço</span>
             <input type="text" class="form-control" id="input-endereco" placeholder="Endereço" aria-label="Endereço"
               name="endereco" />
+            <div class="invalid-feedback">Você precisa digitar o endereço do imóvel</div>
           </div>
         </div>
         
@@ -33,6 +37,7 @@
             <span class="input-group-text" id="basic-addon4">Cadastro Imobiliario</span>
             <input type="text" class="form-control" id="input-cad-imob" placeholder="Cadastro Imob."
               aria-label="Cadastro Imobiliario" name="cadImob" />
+            <div class="invalid-feedback">Você precisa digitar o cadastro imobiliário do imóvel</div>  
           </div>
         </div>
 
@@ -44,13 +49,12 @@
           </div>
         </div>
         
-        
-
         <div class="col-md-4 quadra">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon5">Quadra</span>
             <input type="text" class="form-control" id="input-quadra" placeholder="Numero da quadra"
               aria-label="Numero da quadra" name="quadra" />
+            <div class="invalid-feedback">Você precisa digitar a quadra do imóvel</div>
           </div>
         </div>
         <div class="col-md-4 lote">
@@ -58,7 +62,7 @@
             <span class="input-group-text" id="basic-addon6">Lote</span>
             <input type="text" class="form-control" id="input-lote" placeholder="Numero do Lote"
               aria-label="Numero do Lote" name="lote" >
-                
+            <div class="invalid-feedback">Você precisa digitar o lote do imóvel</div>    
           </div>
         </div>
         <div class="col-md-4 bairro">
@@ -66,6 +70,7 @@
             <span class="input-group-text" id="basic-addon7">Bairro</span>
             <input type="text" class="form-control" id="input-bairro" placeholder="Bairro" aria-label="Bairro"
               name="bairro" />
+            <div class="invalid-feedback">Você precisa digitar o nome do bairro</div>
           </div>
         </div>
 
@@ -74,6 +79,7 @@
             <span class="input-group-text" id="basic-addon8">Área</span>
             <input type="text" class="form-control" id="input-area" placeholder="Área do imóvel"
               aria-label="Área do imóvel" name="area" />
+            <div class="invalid-feedback">Você precisa digitar a área do imóvel</div>  
           </div>
         </div>
 
@@ -101,21 +107,18 @@
           </select>
         </div>
 
-        <div class="input-group mb-3">
+        <div class="input-group has-validation mb-3">
           <select class="form-select" id="inputGroupSelect2" name="responsavel">
             <option selected value="-1">Quem vai assinar o Requerimento?</option>
             <option value="1">DAIANA PRISCILA KUELKAMP ROSA</option>
             <option value="2">HAROLDO BREHM</option>
             <option value="3">HAROLDO DE LIMA</option>
           </select>
+          <div class="invalid-feedback">Você precisa escolher alguém para assinar a declaração</div>
         </div>
 
       </div>
-      <input class="btn btn-secondary" type="submit" value="Adicionar"/>
-    </form>
-
-    <form action="/valorvenal" method="patch" style="margin-top: 1rem;">
-      <input class="btn btn-secondary" type="submit" value="Alterar"/>
+      <input class="btn btn-secondary" type="button" value="Adicionar" onclick="verificaCampos()"/>
     </form>
     <hr>
     
@@ -143,7 +146,6 @@
         </tr>
       </thead>
       <tbody>
-        ejs
         <% consulta.forEach(valorvenal => { %>
           <tr>
             <td><%=valorvenal.nome  %> </td>
@@ -156,7 +158,6 @@
             <td><%=valorvenal.area  %> </td>
             <td><%=valorvenal.finalidade  %> </td>
             <td><%=valorvenal.situacao  %> </td>
-            
             <td><%=valorvenal.valor  %> </td>
             <td class="d-flex gap-3 justify-content-center">
               <form class="form-edit" action="<%= `/valorvenaledit/${valorvenal._id}` %>" method="get"><button type="submit" data-bs-toggle="tooltip" data-bs-title="Editar Registro"><i class="fa-solid fa-pencil text-white"></i></button></form>
@@ -173,9 +174,11 @@
   <%- include ('footer'); %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/vanilla-masker.js"></script>
     <script src="js/valorVenal.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
   </body>
 </html>

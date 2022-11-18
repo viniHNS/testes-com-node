@@ -94,11 +94,35 @@
 
             <div class="input-group mb-3">
                 <select class="form-select" id="inputGroupSelect1" name="situacao">
-                    <option selected value="1">Em análise</option>
-                    <option value="2">Pronto</option>
-                    <option value="3">Entregue</option>
+                    <option <% if (consulta.situacao == "Em análise") { %>
+                     selected
+                    <% } %> value="1">Em análise</option>
+
+                    <option <% if (consulta.situacao == "Pronto") { %>
+                     selected
+                    <% } %> value="2">Pronto</option>
+
+                    <option <% if (consulta.situacao == "Entregue") { %>
+                     selected
+                    <% } %> value="3">Entregue</option>
                 </select>
             </div>
+
+            <div class="input-group mb-3">
+                <select class="form-select" id="inputGroupSelect2" name="responsavel">
+                  <option <% if (consulta.responsavel == "DAIANA PRISCILA KUELKAMP ROSA") { %>
+                   selected
+                  <% } %> value="1">DAIANA PRISCILA KUELKAMP ROSA</option>
+
+                  <option <% if (consulta.responsavel == "HAROLDO BREHM") { %>
+                   selected
+                  <% } %> value="2">HAROLDO BREHM</option>
+
+                  <option <% if (consulta.responsavel == "HAROLDO DE LIMA") { %>
+                   selected
+                  <% } %> value="3">HAROLDO DE LIMA</option>
+                </select>
+              </div>
 
         </div>
         <input class="btn btn-secondary" type="submit" value="Alterar" />
