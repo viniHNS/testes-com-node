@@ -21,7 +21,11 @@ const userSchemaValorVenal = new mongoose.Schema({
   telefone: String,
   cpf: String,
   situacao: String,
-  valor: String
+  valor: String,
+  valorExtenso: String,
+  responsavel: String,
+  cargo: String
+  
 }, { collection: 'valorVenal' });
 
 const schemaIsencao = new mongoose.Schema({

@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const db = require('./db/conn');
 const app = express();
 const port = 3000;
+const extenso = require('extenso');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
@@ -27,13 +28,13 @@ app.get('/', (req, res) => {
 //Rota mensagem whatsapp
 app.get('/zap', (req, res) => {
   res.render('msgZap');
-})
+});
 //----------------------
 
 //Rota Valor venal rural
 app.get('/rural', (req, res) => {
   res.render('rural');
-})
+});
 //----------------------
 
 //Rota Valor venal urbano GET
@@ -45,7 +46,7 @@ app.get('/valorvenal', async (req, res) => {
   //-----------
   
   res.render('valorVenal', { consulta } );
-})
+});
 //----------------------
 
 app.get('/valorvenalprint/:id', async (req, res) => {
@@ -56,7 +57,19 @@ app.get('/valorvenalprint/:id', async (req, res) => {
   //-----------
 
   res.render('impressaoValorVenal', { consultaPrint })
-})
+});
+
+app.get('/valorvenaldeclaracao/:id', async (req, res) => {
+  //consulta BD
+  const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
+  const id = req.params.id;
+  const consultaDeclaracao = await valorVenal.findById(id).exec();
+  //------------
+  let porExtenso = extenso(consultaDeclaracao.valor, {mode: 'currency'})
+  consultaDeclaracao.valorExtenso = porExtenso;
+  
+  res.render('valorVenalDeclaracao', { consultaDeclaracao });
+});
 
 //Rota Valor venal urbano cadastro POST
 
@@ -84,8 +97,25 @@ app.post('/valorvenal', async (req, res, next) => {
     situacao = "Entregue"
   }
 
+  if(req.body.responsavel == "1" && req.body.situacao != "-1"){
+    responsavel = "DAIANA PRISCILA KUELKAMP ROSA";
+    cargo = "Depto. de Tributação";
+  }
+
+  if(req.body.responsavel == "2" && req.body.situacao != "-1"){
+    responsavel = "HAROLDO BREHM";
+    cargo = "Depto. de Finanças";
+  }
+  
+  if(req.body.responsavel == "3" && req.body.situacao != "-1"){
+    responsavel = "HAROLDO DE LIMA";
+    cargo = "Fiscal Tributário";
+  }
+
+
+
   const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
-  const valorvenal = new valorVenal({ nome, endereco, lote, quadra, area, bairro, cadImob, finalidade, telefone, cpf, situacao, valor});
+  const valorvenal = new valorVenal({ nome, endereco, lote, quadra, area, bairro, cadImob, finalidade, telefone, cpf, situacao, valor, responsavel, cargo});
 
   try {
     await valorvenal.save();
@@ -105,7 +135,7 @@ app.post('/valorvenaldel/:id', async (req, res) => {
   //-----------
   
   res.redirect('/valorVenal');
-})
+});
 
 app.get('/valorvenaledit/:id', async (req, res) => {
 
@@ -120,7 +150,7 @@ app.get('/valorvenaledit/:id', async (req, res) => {
   //-----------
   
   res.render('valorVenalEdit', { consulta });
-})
+});
 
 app.post('/valorvenaledit/:id', async (req, res, next) => {
 
@@ -179,7 +209,7 @@ app.post('/valorvenaledit/:id', async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-})
+});
 
 
 
@@ -190,7 +220,7 @@ app.get('/isencao', async (req, res) => {
   const consultaIsencao = await isencao.find({}).lean().exec();
   //-----------
   res.render('isencao', { consultaIsencao });
-})
+});
 
 app.post('/isencao', async (req, res, next) => {
 

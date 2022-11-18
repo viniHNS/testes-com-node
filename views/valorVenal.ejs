@@ -101,6 +101,15 @@
           </select>
         </div>
 
+        <div class="input-group mb-3">
+          <select class="form-select" id="inputGroupSelect2" name="responsavel">
+            <option selected value="-1">Quem vai assinar o Requerimento?</option>
+            <option value="1">DAIANA PRISCILA KUELKAMP ROSA</option>
+            <option value="2">HAROLDO BREHM</option>
+            <option value="3">HAROLDO DE LIMA</option>
+          </select>
+        </div>
+
       </div>
       <input class="btn btn-secondary" type="submit" value="Adicionar"/>
     </form>
@@ -149,8 +158,11 @@
             <td><%=valorvenal.situacao  %> </td>
             
             <td><%=valorvenal.valor  %> </td>
-            <td class="d-flex gap-3 justify-content-center"><form class="form-edit" action="<%= `/valorvenaledit/${valorvenal._id}` %>" method="get"><button  type="submit"><i class="fa-solid fa-pencil text-white"></i></button></form>
-              <form class="form-print" action="<%= `/valorvenalprint/${valorvenal._id}` %>" method="get"><button type="submit" formtarget="_blank"><i class="fa-solid fa-print text-white"></i></button></form><form class="form-del" action="<%= `/valorvenaldel/${valorvenal._id}` %>" method="post"><button class="button-del" type="submit"><i class="fa-solid fa-trash text-danger"></i></button></form>
+            <td class="d-flex gap-3 justify-content-center">
+              <form class="form-edit" action="<%= `/valorvenaledit/${valorvenal._id}` %>" method="get"><button type="submit" data-bs-toggle="tooltip" data-bs-title="Editar Registro"><i class="fa-solid fa-pencil text-white"></i></button></form>
+              <form class="form-print" action="<%= `/valorvenalprint/${valorvenal._id}` %>" method="get"><button type="submit" formtarget="_blank" data-bs-toggle="tooltip" data-bs-title="Imprimir Requerimento"><i class="fa-solid fa-print text-white"></i></button></form>
+              <form class="form-print-avaliacao" action="<%= `/valorvenaldeclaracao/${valorvenal._id}` %>" method="get"><button class="button-del" formtarget="_blank" type="submit" data-bs-toggle="tooltip" data-bs-title="Gerar Declaração"><i class="fa-regular fa-file text-white"></i></button></form>
+              <form class="form-del" action="<%= `/valorvenaldel/${valorvenal._id}` %>" method="post"><button class="button-del" type="submit" data-bs-toggle="tooltip" data-bs-title="Excluir Registro"><i class="fa-solid fa-trash text-danger"></i></button></form>
             </td>
             
           </tr>

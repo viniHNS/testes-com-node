@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/valorVenal/style3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css"/>
+    <title>Impressão - Valor Venal Urbano</title>
+</head>
+
+<body class="A4">
+    <section class="sheet padding-20mm">
+      <img class="cabecalho" src="/img/cabecalho.jpg" alt="Logo do Municipio">
+      <h1 class="titulo">DECLARAÇÃO</h1>
+      <p class="texto">A Prefeitura Municipal de Terra Roxa, Estado do Paraná, através do Departamento de Tributação e Cadastro Técnico, DECLARA para os devidos fins que o 
+        imóvel denominado <strong>Lote N° <%= consultaDeclaracao.lote %>,  da quadra N° <%= consultaDeclaracao.quadra %>, <%= consultaDeclaracao.bairro %></strong>, neste Município, <strong>está avaliado
+        em R$<%= consultaDeclaracao.valor %> (<%= consultaDeclaracao.valorExtenso %>)</strong>, para cobrança de ITBI ou ITCDM. 
+      </p>
+      <p class="texto">A presente é fornecida para quaisquer finalidades que se fizerem necessárias.</p>
+      <p class="texto">E, por ser expressão de verdade firmamos o presente para que surta os efeitos legais.</p>
+
+      <p id="data">Terra Roxa - Pr, <span id="data-moment"></span></p>
+
+      <div class="assinatura">
+        <p class="cargo1"><%= consultaDeclaracao.responsavel %> </p>
+        <p class="cargo2"><%= consultaDeclaracao.cargo %> </p>
+      </div>
+      
+    </section>
+
+    
+
+  
+    <script src="/js/moment.js"></script>
+    <script src="/js/valorVenalAvaliacao.js"></script>
+  </body>
+</html>

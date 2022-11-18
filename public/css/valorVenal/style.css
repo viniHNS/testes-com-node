@@ -1,27 +1,13 @@
-.form-del{
+.form-del, .form-print, .form-print-avaliacao, .form-edit{
     background: none;
 }
 
-.form-del button{
+.form-del button, .form-edit button, .form-print button, .form-print-avaliacao button{
     background: none;
     border: none;
 }
 
-.form-edit{
-    background: none;
-}
 
-.form-edit button{
-    background: none;
-    border: none;
-}
 
-.form-print{
-    background: none;
-}
 
-.form-print button{
-    background: none;
-    border: none;
-}
 
