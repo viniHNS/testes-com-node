@@ -100,21 +100,85 @@ app.post('/valorvenaldel/:id', async (req, res) => {
 
   //consulta BD
   const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
-
   let id = req.params.id;
   await valorVenal.findByIdAndRemove(id).exec();
   //-----------
+  
   res.redirect('/valorVenal');
 })
 
-app.post('/valorvenaledit/:id', async (req, res) => {
+app.get('/valorvenaledit/:id', async (req, res) => {
 
   //consulta BD
   const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
   let id = req.params.id;
-  const consulta = await valorVenal.findById(id).lean().exec();
+  const consulta = await valorVenal.findById(id).exec();
+
+  console.log(consulta);
+  console.log("");
+  console.log(consulta.finalidade);
   //-----------
-  res.render('/valorVenal');
+  
+  res.render('valorVenalEdit', { consulta });
+})
+
+app.post('/valorvenaledit/:id', async (req, res, next) => {
+
+  //consulta BD
+  const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
+  let id = req.params.id;
+  const consulta = await valorVenal.findById(id).exec();
+  //-----------
+  const nome = req.body.nome;
+  consulta.nome = nome;
+
+  const endereco = req.body.endereco;
+  consulta.endereco = endereco;
+
+  const lote = req.body.lote;
+  consulta.lote = lote;
+
+  const quadra = req.body.quadra;
+  consulta.quadra = quadra;
+
+  const area = req.body.area;
+  consulta.area = area;
+
+  const bairro = req.body.bairro;
+  consulta.bairro = bairro;
+
+  const cadImob = req.body.cadImob;
+  consulta.cadImob = cadImob;
+
+  const finalidade = req.body.finalidade;
+  consulta.finalidade = finalidade;
+
+  const telefone = req.body.telefone;
+  consulta.telefone = telefone;
+
+  const cpf = req.body.cpf;
+  consulta.cpf = cpf;
+
+  let valor = req.body.valorAvaliacao;
+  consulta.valor = valor;
+
+  if(req.body.situacao == "1"){
+    situacao = "Em análise"
+  }
+  if(req.body.situacao == "2"){
+    situacao = "Pronto"
+  }
+  if(req.body.situacao == "3"){
+    situacao = "Entregue"
+  }
+  consulta.situacao = situacao;
+
+  try {
+    await consulta.save();
+    res.redirect('/valorVenal');
+  } catch (err) {
+    next(err);
+  }
 })
 
 
@@ -146,10 +210,6 @@ app.post('/isencao', async (req, res, next) => {
   const possuiDebito = req.body.possuiDebito;
   const debitos = req.body.debitos;
   const resideImovel = req.body.resideImovel;
-
-
-  
-
 
  /* if(req.body.situacao == "1"){
     situacao = "Em análise"

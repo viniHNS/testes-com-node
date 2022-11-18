@@ -149,8 +149,8 @@
             <td><%=valorvenal.situacao  %> </td>
             
             <td><%=valorvenal.valor  %> </td>
-            <td class="d-flex gap-3 justify-content-center"><form class="form-edit" action="<%= `/valorvenaledit/${valorvenal._id}` %>" method="get"><button type="submit"><i class="fa-solid fa-pencil text-white"></i></button></form>
-              <form class="form-print" action="<%= `/valorvenalprint/${valorvenal._id}` %>" method="get"><button type="submit" formtarget="_blank"><i class="fa-solid fa-print text-white"></i></button></form><form class="form-del" action="<%= `/valorvenaldel/${valorvenal._id}` %>" method="post"><button type="submit"><i class="fa-solid fa-trash text-danger"></i></button></form>
+            <td class="d-flex gap-3 justify-content-center"><form class="form-edit" action="<%= `/valorvenaledit/${valorvenal._id}` %>" method="get"><button  type="submit"><i class="fa-solid fa-pencil text-white"></i></button></form>
+              <form class="form-print" action="<%= `/valorvenalprint/${valorvenal._id}` %>" method="get"><button type="submit" formtarget="_blank"><i class="fa-solid fa-print text-white"></i></button></form><form class="form-del" action="<%= `/valorvenaldel/${valorvenal._id}` %>" method="post"><button class="button-del" type="submit"><i class="fa-solid fa-trash text-danger"></i></button></form>
             </td>
             
           </tr>
@@ -164,5 +164,6 @@
       crossorigin="anonymous"></script>
     <script src="js/vanilla-masker.js"></script>
     <script src="js/valorVenal.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </body>
 </html>
