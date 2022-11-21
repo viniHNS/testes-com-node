@@ -94,17 +94,17 @@
 
             <div class="input-group mb-3">
                 <select class="form-select" id="inputGroupSelect1" name="situacao">
-                    <option <% if (consulta.situacao == "Em análise") { %>
+                    <option <% if (consulta.situacao == "Avaliação sendo feita") { %>
                      selected
-                    <% } %> value="1">Em análise</option>
+                    <% } %> value="1">Avaliação sendo feita</option>
 
-                    <option <% if (consulta.situacao == "Pronto") { %>
+                    <option <% if (consulta.situacao == "Esperando retirada") { %>
                      selected
-                    <% } %> value="2">Pronto</option>
+                    <% } %> value="2">Esperando retirada</option>
 
-                    <option <% if (consulta.situacao == "Entregue") { %>
+                    <option <% if (consulta.situacao == "Finalizado (entregue)") { %>
                      selected
-                    <% } %> value="3">Entregue</option>
+                    <% } %> value="3">Finalizado (entregue)</option>
                 </select>
             </div>
 

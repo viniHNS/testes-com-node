@@ -149,12 +149,8 @@ verificaCampos = () => {
     isLoteValido == 1 && isNomeValido == 1 && isQuadraValido == 1 && isResponsavelValido == 1){
       document.querySelector("#form-valor-venal").submit();
     } else {
-      swal("Algo deu errado!", "Você deve digitar os campos destacados!", "error");
+      swal("Algo deu errado!", "Você deve digitar nos campos destacados!", "error");
     }
-
-
-
-
 
 }
 

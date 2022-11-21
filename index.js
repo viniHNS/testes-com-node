@@ -42,7 +42,8 @@ app.get('/valorvenal', async (req, res) => {
 
   //consulta BD
   const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
-  const consulta = await valorVenal.find({}).lean().exec();
+  const consulta = await valorVenal.find({}).sort({situacao: 1}).lean().exec();
+  
   //-----------
   
   res.render('valorVenal', { consulta } );
@@ -88,13 +89,13 @@ app.post('/valorvenal', async (req, res, next) => {
   let valor = req.body.valorAvaliacao;
 
   if(req.body.situacao == "1"){
-    situacao = "Em análise"
+    situacao = "Avaliação sendo feita"
   }
   if(req.body.situacao == "2"){
-    situacao = "Pronto"
+    situacao = "Esperando retirada"
   }
   if(req.body.situacao == "3"){
-    situacao = "Entregue"
+    situacao = "Finalizado (entregue)"
   }
 
   if(req.body.responsavel == "1" && req.body.situacao != "-1"){
@@ -199,13 +200,13 @@ app.post('/valorvenaledit/:id', async (req, res, next) => {
   consulta.valor = valor;
 
   if(req.body.situacao == "1"){
-    situacao = "Em análise"
+    situacao = "Avaliação sendo feita"
   }
   if(req.body.situacao == "2"){
-    situacao = "Pronto"
+    situacao = "Esperando retirada"
   }
   if(req.body.situacao == "3"){
-    situacao = "Entregue"
+    situacao = "Finalizado (entregue)"
   }
   consulta.situacao = situacao;
 
