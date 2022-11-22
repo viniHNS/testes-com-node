@@ -1,5 +1,5 @@
 *{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .cabecalho{
@@ -12,7 +12,7 @@
 .titulo{
     font-weight: bold;
     text-align: center;
-    font-size: 26px;
+    font-size: 20px;
     margin-bottom: 2rem;
     margin-top: 0;
     text-decoration: underline;
@@ -20,7 +20,7 @@
 
 .texto {
     text-indent: 12rem;
-    font-size: 20px;
+    font-size: 18px;
     text-align: justify;
     line-height: 2rem;
     margin-bottom: 3rem;
@@ -28,7 +28,7 @@
 
 #data{
     text-align: start;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 5rem;
     margin-bottom: 7rem;
 }
@@ -50,11 +50,11 @@
 }
 
 .cargo1{
-    font-size: 21px;
+    font-size: 18px;
 }
 
 .cargo2{
-    font-size: 18px;
+    font-size: 12px;
 }
 
 
