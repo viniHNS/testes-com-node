@@ -2,11 +2,12 @@
 
 
   <div class="container mt-4">
-    <p class="text-white">Valor Venal Urbano</p>
+    <p class="text-white display-5">Valor Venal Urbano</p>
 
     <form id="form-valor-venal" action="/valorvenal" method="post">
       <div class="row">
-        <div class="col-md-8 contribuinte">
+        <p class="text-white">Dados Pessoais</p>
+        <div class="col-md-9 contribuinte">
           <div class="input-group mb-3">
             <span class="input-group-text has-validation" id="basic-addon1">Nome<span style="color: #ff0000;">*</span></span>
             <input type="text" class="form-control" id="input-contribuinte" placeholder="Nome do requerente"
@@ -15,41 +16,53 @@
           </div>
           
         </div>
-        <div class="col-md-4 cpf">
+        <div class="col-md-3 cpf">
           <div class="input-group mb-3">
             <span class="input-group-text has-validation" id="basic-addon3">CPF<span style="color: #ff0000;">*</span></span>
-            <input type="text" class="form-control" id="input-cpf" placeholder="Certificado de Pessoa Fisica - CPF"
+            <input type="text" class="form-control" id="input-cpf" placeholder="Certificado de Pessoa Fisica"
               aria-label="Certificado de Pessoa Fisica - CPF" name="cpf" />
             <div class="invalid-feedback">Você precisa digitar o CPF do requerente</div>
           </div>
         </div>
 
+        <div class="col-md-12 telefone">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon10">Telefone</span>
+            <input type="text" class="form-control" id="input-telefone" placeholder="Telefone Contribuinte"
+              aria-label="Telefone" name="telefone" />
+          </div>
+        </div>
+
+        <hr>
+
+        <p class="text-white">Dados do imóvel</p>
         <div class="col-md-12">
           <div class="input-group mb-3 endereco">
             <span class="input-group-text has-validation" id="basic-addon4">Endereço<span style="color: #ff0000;">*</span></span>
-            <input type="text" class="form-control" id="input-endereco" placeholder="Endereço" aria-label="Endereço"
+            <input type="text" class="form-control" id="input-endereco" placeholder="Nome da Rua, Avenida e número" aria-label="Endereço"
               name="endereco" />
             <div class="invalid-feedback">Você precisa digitar o endereço do imóvel</div>
+          </div>
+        </div>
+
+        <div class="col-md-8 bairro">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon7">Bairro<span style="color: #ff0000;">*</span></span>
+            <input type="text" class="form-control" id="input-bairro" placeholder="Bairro" aria-label="Bairro"
+              name="bairro" />
+            <div class="invalid-feedback">Você precisa digitar o nome do bairro</div>
           </div>
         </div>
         
         <div class="col-md-4">
           <div class="input-group mb-3 cadImob">
-            <span class="input-group-text" id="basic-addon4">Cadastro Imobiliario<span style="color: #ff0000;">*</span></span>
-            <input type="text" class="form-control" id="input-cad-imob" placeholder="Cadastro Imob."
+            <span class="input-group-text" id="basic-addon4">Cad. Imob.<span style="color: #ff0000;">*</span></span>
+            <input type="text" class="form-control" id="input-cad-imob" placeholder="Cadastro Imobiliario"
               aria-label="Cadastro Imobiliario" name="cadImob" />
             <div class="invalid-feedback">Você precisa digitar o cadastro imobiliário do imóvel</div>  
           </div>
         </div>
 
-        <div class="col-md-8">
-          <div class="input-group mb-3 valorAvaliacao">
-            <span class="input-group-text" id="basic-addon4">Valor (R$)</span>
-            <input type="text" class="form-control" id="input-valor-avaliacao" placeholder="Valor da avaliação"
-              aria-label="Cadastro Imobiliario" name="valorAvaliacao" />
-          </div>
-        </div>
-        
         <div class="col-md-4 quadra">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon5">Quadra<span style="color: #ff0000;">*</span></span>
@@ -58,6 +71,7 @@
             <div class="invalid-feedback">Você precisa digitar a quadra do imóvel</div>
           </div>
         </div>
+
         <div class="col-md-4 lote">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon6">Lote<span style="color: #ff0000;">*</span></span>
@@ -66,16 +80,8 @@
             <div class="invalid-feedback">Você precisa digitar o lote do imóvel</div>    
           </div>
         </div>
-        <div class="col-md-4 bairro">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon7">Bairro<span style="color: #ff0000;">*</span></span>
-            <input type="text" class="form-control" id="input-bairro" placeholder="Bairro" aria-label="Bairro"
-              name="bairro" />
-            <div class="invalid-feedback">Você precisa digitar o nome do bairro</div>
-          </div>
-        </div>
 
-        <div class="col-md-2 area">
+        <div class="col-md-4 area">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon8">Área<span style="color: #ff0000;">*</span></span>
             <input type="text" class="form-control" id="input-area" placeholder="Área do imóvel"
@@ -83,8 +89,22 @@
             <div class="invalid-feedback">Você precisa digitar a área do imóvel</div>  
           </div>
         </div>
+        
+        <hr>
 
-        <div class="col-md-6 finalidade">
+        <p class="text-white">Dados da avaliação</p>
+      
+        <div class="col-md-12">
+          <div class="input-group mb-3 valorAvaliacao">
+            <span class="input-group-text" id="basic-addon4">Valor (R$)</span>
+            <input type="text" class="form-control" id="input-valor-avaliacao" placeholder="Valor da avaliação"
+              aria-label="Cadastro Imobiliario" name="valorAvaliacao" />
+          </div>
+        </div>
+        
+        
+
+        <div class="col-md-12 finalidade">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon9">Finalidade</span>
             <input type="text" class="form-control" id="input-finalidade" placeholder="Finalidade requerimento"
@@ -92,14 +112,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 telefone">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon10">Telefone</span>
-            <input type="text" class="form-control" id="input-telefone" placeholder="Telefone Contribuinte"
-              aria-label="Telefone" name="telefone" />
-          </div>
-        </div>
-
+        
         <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect1" name="situacao">
             <option selected value="1">Avaliação sendo feita</option>
