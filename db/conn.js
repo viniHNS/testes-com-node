@@ -44,7 +44,8 @@ const schemaIsencao = new mongoose.Schema({
   possuiDebito: Boolean,
   debitos: String,
   resideImovel: Boolean,
-  anoIsencao: Number
+  anoIsencao: Number,
+  parecerAssistencia: String,
 }, { collection: 'isencao'});
 
 

@@ -151,9 +151,6 @@ app.get('/valorvenaledit/:id', async (req, res) => {
   let id = req.params.id;
   const consulta = await valorVenal.findById(id).exec();
 
-  console.log(consulta);
-  console.log("");
-  console.log(consulta.finalidade);
   //-----------
   
   res.render('valorVenalEdit', { consulta });
@@ -237,6 +234,9 @@ app.post('/valorvenaledit/:id', async (req, res, next) => {
 });
 
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 app.get('/isencao', async (req, res) => {
 
@@ -247,34 +247,61 @@ app.get('/isencao', async (req, res) => {
   res.render('isencao', { consultaIsencao });
 });
 
+app.get('/isencaoconsulta/:id', async (req, res) => {
+
+  //consulta BD
+  const isencao = db.Mongoose.model('isencao', db.SchemaIsencao, 'isencao');
+  const consultaIsencao = await isencao.find({}).lean().exec();
+  //-----------
+  res.render('isencao', { consultaIsencao });
+});
+
 app.post('/isencao', async (req, res, next) => {
 
-  const requerente = req.body.requerente;
-  const endereco = req.body.endereco;
-  const cadImob = req.body.cadImob;
-  const telefone = req.body.telefone;
-  const sexo = req.body.sexo;
-  const anoIsencao = req.body.anoIsencao;
-  const cpf = req.body.cpf;
-  const rg = req.body.rg;
-  const tipoBeneficio = req.body.tipoBeneficio;
-  const valorBeneficio = req.body.valorBeneficio;
-  const estadoCivil = req.body.estadoCivil;
-  const conjugeBeneficio = req.body.conjugeBeneficio;
-  const unicoImovel = req.body.unicoImovel;
-  const possuiDebito = req.body.possuiDebito;
-  const debitos = req.body.debitos;
-  const resideImovel = req.body.resideImovel;
+  let requerente = req.body.requerente; //ok
+  let endereco = req.body.endereco; //ok
+  let cadImob = req.body.cadImob; //ok
+  let telefone = req.body.telefone; //ok
+  let anoIsencao = req.body.anoIsencao; //ok
+  let cpf = req.body.cpf; //ok
+  let rg = req.body.rg; //ok
+  let sexo;
+  let tipoBeneficio = req.body.tipoBeneficio; //ok
+  let valorBeneficio = req.body.valorBeneficio; //ok
+  let estadoCivil = req.body.estadoCivil; //ok
+  let conjugeBeneficio = req.body.conjugeBeneficio; //ok
+  let unicoImovel = req.body.unicoImovel; // tratamento**
+  let possuiDebito = req.body.possuiDebito; // tratamento**
+  let debitos = req.body.debitos; //ok
+  let resideImovel = req.body.resideImovel; // tratamento
 
- /* if(req.body.situacao == "1"){
-    situacao = "Em análise"
+  if(req.body.masculino == "1"){
+    sexo = "masculino"
   }
-  if(req.body.situacao == "2"){
-    situacao = "Pronto"
+
+  if(req.body.feminino == "1"){
+    sexo = "feminino"
   }
-  if(req.body.situacao == "3"){
-    situacao = "Entregue"
-  }*/
+
+  if(req.body.unicoImovel == "1"){
+    unicoImovel = true;
+  } else {
+    unicoImovel = false;
+  }
+
+  if(req.body.possuiDebito == "1"){
+    possuiDebito = true;
+  } else {
+    possuiDebito = false;
+  }
+
+  if(req.body.resideImovel == "1"){
+    resideImovel = true;
+  } else {
+    resideImovel = false;
+  }
+
+  console.log(sexo);
 
   const Isencao = db.Mongoose.model('isencao', db.SchemaIsencao, 'isencao');
   const isencao = new Isencao({ requerente, endereco, cadImob, telefone, sexo, anoIsencao, cpf, rg, tipoBeneficio, valorBeneficio, estadoCivil, conjugeBeneficio, unicoImovel, possuiDebito, debitos, resideImovel, anoIsencao});
@@ -298,4 +325,3 @@ app.listen(port, () => {
   console.log(clc.white('----------------------------------'));
   console.log("");
 });
-
