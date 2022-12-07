@@ -6,7 +6,7 @@
         <div class="row">
             <!--Pessoais-->
             <p class="text-white">Dados Pessoais</p>
-            <div class="col-md-9 contribuinte">
+            <div class="col-md-10 contribuinte">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Nome<span style="color: #ff0000;">*</span></span>
                     <input type="text" class="form-control" id="input-contribuinte" name="requerente" placeholder="Nome do contribuinte" aria-label="Nome do contribuinte">
@@ -14,19 +14,12 @@
             </div>
 
             <div class="col-md-2">
-                <div class="d-flex mt-2 mb-3 justify-content-around">
-                    <div class="form-check px-4 justify-items-start">
-                        <input class="form-check-input" type="radio" name="masculino" id="RadioButton3">
-                        <label class="form-check-label text-white" for="RadioButton3">
-                            Masculino
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="feminino" id="RadioButton4">
-                        <label class="form-check-label text-white" for="RadioButton4">
-                            Feminino
-                        </label>
-                    </div>
+                <div class="input-group mb-3">
+                    <select class="form-select" id="inputGroupSelect2" name="sexo">
+                        <option selected>Sexo</option>
+                        <option value="1">Masculino</option>
+                        <option value="2">Feminino</option>
+                    </select>
                 </div>
             </div>
 
@@ -166,7 +159,7 @@
         <div class="row">
             <div class="col-md-3 documentos-entregues mt-3 pt-3">
                 <div class="input-group mb-3">
-                    <select class="form-select" id="inputGroupSelect4">
+                    <select class="form-select" id="inputGroupSelect4" name="docsEntregue">
                         <option selected>Todos documentos entregues?</option>
                         <option value="1">Sim</option>
                         <option value="2">Não</option>
@@ -244,6 +237,8 @@
 
                 <form class="form-edit" action="<%= `/isencao/${consultaIsencao._id}` %>" method="get"><button type="submit" data-bs-toggle="tooltip" data-bs-title="Editar Registro"><i class="fa-solid fa-pencil text-white"></i></button></form>
                 
+                <form class="form-delete" action="<%= `/isencaodelete/${consultaIsencao._id}` %>" method="post"><button type="submit" data-bs-toggle="tooltip" data-bs-title="Deletar Registro"><i class="fa-solid fa-trash text-danger"></i></button></form>
+
             </td>
             
           </tr>

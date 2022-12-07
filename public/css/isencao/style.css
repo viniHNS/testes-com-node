@@ -2,11 +2,8 @@
     background: none;
 }
 
-.form-consulta button{
+.form-consulta button, .form-delete button{
     background: none;
     border: none;
 }
 
-.custom-color{
-    
-}

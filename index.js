@@ -76,7 +76,7 @@ app.get('/valorvenaldeclaracao/:id', async (req, res) => {
 
 app.post('/valorvenal', async (req, res, next) => {
 
-  const nome = req.body.nome;
+  const nome = req.body.nome.toUpperCase();
   const endereco = req.body.endereco;
   const lote = req.body.lote;
   const quadra = req.body.quadra;
@@ -118,7 +118,6 @@ app.post('/valorvenal', async (req, res, next) => {
   } else {
     valor = req.body.valorAvaliacao;
   }
-
 
 
   const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
@@ -233,7 +232,26 @@ app.post('/valorvenaledit/:id', async (req, res, next) => {
   }
 });
 
+app.get('/valorvenalpesquisa/:id', async (req, res) => {
 
+  //consulta BD
+  const valorVenal = db.Mongoose.model('valorVenal', db.UserSchemaValorVenal, 'valorVenal');
+  let nomePesq = req.params.nomePesq;
+  let id = req.params.id;
+  const consulta = await valorVenal.find({'nome' : nomePesq}, (err, docs) => {
+    if(err){
+      console.log(error)
+    } else {
+      console.log(docs)
+    }
+  })
+});
+
+
+
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -246,6 +264,15 @@ app.get('/isencao', async (req, res) => {
   //-----------
   res.render('isencao', { consultaIsencao });
 });
+
+app.post('/isencaodelete/:id', async (req, res) => {
+
+  const isencao = db.Mongoose.model('isencao', db.SchemaIsencao, 'isencao');
+  let id = req.params.id;
+  await isencao.findByIdAndRemove(id).exec();
+
+  res.redirect('/isencao');
+})
 
 app.get('/isencaoconsulta/:id', async (req, res) => {
 
@@ -265,7 +292,7 @@ app.post('/isencao', async (req, res, next) => {
   let anoIsencao = req.body.anoIsencao; //ok
   let cpf = req.body.cpf; //ok
   let rg = req.body.rg; //ok
-  let sexo;
+  let sexo = req.body.sexo;
   let tipoBeneficio = req.body.tipoBeneficio; //ok
   let valorBeneficio = req.body.valorBeneficio; //ok
   let estadoCivil = req.body.estadoCivil; //ok
@@ -274,13 +301,13 @@ app.post('/isencao', async (req, res, next) => {
   let possuiDebito = req.body.possuiDebito; // tratamento**
   let debitos = req.body.debitos; //ok
   let resideImovel = req.body.resideImovel; // tratamento
+  let todosDocs = req.body.docsEntregue;
+  let parecer = req.body.parecer;
 
-  if(req.body.masculino == "1"){
-    sexo = "masculino"
-  }
-
-  if(req.body.feminino == "1"){
-    sexo = "feminino"
+  if(req.body.sexo == "1"){
+    sexo = "Masculino";
+  } else {
+    sexo = "Feminino";
   }
 
   if(req.body.unicoImovel == "1"){
@@ -301,10 +328,23 @@ app.post('/isencao', async (req, res, next) => {
     resideImovel = false;
   }
 
-  console.log(sexo);
+  if(req.body.docsEntregue == "1"){
+    todosDocs = true;
+  } else {
+    todosDocs = false;
+  }
+
+  if(req.body.parecer == "1"){
+    parecer = "Em análise";
+  } else if(req.body.parecer == "2"){
+    parecer = "Deferido";
+  } else if(req.body.parecer == "3"){
+    parecer = "Indeferido";
+  }
+
 
   const Isencao = db.Mongoose.model('isencao', db.SchemaIsencao, 'isencao');
-  const isencao = new Isencao({ requerente, endereco, cadImob, telefone, sexo, anoIsencao, cpf, rg, tipoBeneficio, valorBeneficio, estadoCivil, conjugeBeneficio, unicoImovel, possuiDebito, debitos, resideImovel, anoIsencao});
+  const isencao = new Isencao({ requerente, endereco, cadImob, telefone, sexo, anoIsencao, cpf, rg, tipoBeneficio, valorBeneficio, estadoCivil, conjugeBeneficio, unicoImovel, possuiDebito, debitos, resideImovel, anoIsencao, parecer, todosDocs});
   
   try {
     await isencao.save();

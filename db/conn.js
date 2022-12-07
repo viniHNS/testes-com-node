@@ -3,12 +3,6 @@ const cli = require('cli-color')
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.sy8wpn9.mongodb.net/myDB?retryWrites=true&w=majority");
 
-const userSchema = new mongoose.Schema({
-  username: String,
-  email: String
-}, { collection: 'users' }
-);
-
 const userSchemaValorVenal = new mongoose.Schema({
   nome: String,
   endereco: String,
@@ -46,9 +40,10 @@ const schemaIsencao = new mongoose.Schema({
   resideImovel: Boolean,
   anoIsencao: Number,
   parecerAssistencia: String,
+  todosDocs: Boolean,
 }, { collection: 'isencao'});
 
 
 
-module.exports = { Mongoose: mongoose, UserSchema: userSchema,  UserSchemaValorVenal: userSchemaValorVenal, SchemaIsencao: schemaIsencao }
+module.exports = { Mongoose: mongoose, UserSchemaValorVenal: userSchemaValorVenal, SchemaIsencao: schemaIsencao }
 
