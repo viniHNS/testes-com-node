@@ -233,11 +233,11 @@
             <td><%=isencao.estadoCivil  %> </td>
             <td><%=isencao.anoIsencao  %> </td>
             <td class="d-flex gap-3">
-                <form class="form-consulta" action="<%= `/isencaoconsulta/${consultaIsencao._id}` %>" method="get"><button type="submit" data-bs-toggle="tooltip" data-bs-title="Detalhar Registro"><i class="fa-solid fa-magnifying-glass text-white"></i></button></form>
+                <form class="form-consulta" action="<%= `/isencaoconsulta/${isencao._id}` %>" method="get"><button type="submit" data-bs-toggle="tooltip" data-bs-title="Detalhar Registro"><i class="fa-solid fa-magnifying-glass text-white"></i></button></form>
 
-                <form class="form-edit" action="<%= `/isencao/${consultaIsencao._id}` %>" method="get"><button type="submit" data-bs-toggle="tooltip" data-bs-title="Editar Registro"><i class="fa-solid fa-pencil text-white"></i></button></form>
+                <form class="form-edit" action="<%= `/isencao/${isencao._id}` %>" method="post"><button type="submit" data-bs-toggle="tooltip" data-bs-title="Editar Registro"><i class="fa-solid fa-pencil text-white"></i></button></form>
                 
-                <form class="form-delete" action="<%= `/isencaodelete/${consultaIsencao._id}` %>" method="post"><button type="submit" data-bs-toggle="tooltip" data-bs-title="Deletar Registro"><i class="fa-solid fa-trash text-danger"></i></button></form>
+                <form class="form-delete" action="<%= `/isencaodelete/${isencao._id}` %>" method="post"><button type="submit" data-bs-toggle="tooltip" data-bs-title="Deletar Registro"><i class="fa-solid fa-trash text-danger"></i></button></form>
 
             </td>
             

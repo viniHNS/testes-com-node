@@ -255,7 +255,7 @@ app.get('/valorvenalpesquisa/:id', async (req, res) => {
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+//ok
 app.get('/isencao', async (req, res) => {
 
   //consulta BD
@@ -265,6 +265,7 @@ app.get('/isencao', async (req, res) => {
   res.render('isencao', { consultaIsencao });
 });
 
+//ok
 app.post('/isencaodelete/:id', async (req, res) => {
 
   const isencao = db.Mongoose.model('isencao', db.SchemaIsencao, 'isencao');
@@ -279,8 +280,9 @@ app.get('/isencaoconsulta/:id', async (req, res) => {
   //consulta BD
   const isencao = db.Mongoose.model('isencao', db.SchemaIsencao, 'isencao');
   const consultaIsencao = await isencao.find({}).lean().exec();
+  console.log(consultaIsencao);
   //-----------
-  res.render('isencao', { consultaIsencao });
+  res.render('isencaoConsulta', { isencao });
 });
 
 app.post('/isencao', async (req, res, next) => {

@@ -1,119 +1,76 @@
 <%- include ('header'); %>
 <div class="container mt-4">
-    <form action="" method="post">
-        <p class="text-white">Isenção</p>
-        
-        <div class="d-flex mt-3 mb-3">
-            <div class="form-check px-4">
-            <input class="form-check-input" type="radio" name="RadioButton" id="RadioButton1" checked>
-            <label class="form-check-label text-white" for="RadioButton1">
-                Aposentado, pensionista ou BPC <i>(Não funciona)</i>
-            </label>
-            </div>
-            <div class="form-check">
-            <input class="form-check-input" type="radio" name="RadioButton" id="RadioButton2">
-            <label class="form-check-label text-white" for="RadioButton2">
-                Baixa Renda <i>(Não funciona)</i>
-            </label>
-            </div>
-        </div>
+    <form action="isencaoconsulta" method="get">
+        <p class="text-white display-5">Isenção IPTU</p>
 
         <div class="row">
-            <div class="col-md-8 contribuinte">
+            <!--Pessoais-->
+            <p class="text-white">Dados Pessoais</p>
+            <div class="col-md-10 contribuinte">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Nome<span style="color: #ff0000;">*</span></span>
-                    <input type="text" class="form-control" id="input-contribuinte" name="requerente" placeholder="Nome do contribuinte" aria-label="Nome do contribuinte">
+                    <input type="text" class="form-control" id="input-contribuinte" name="requerente" placeholder="Nome do contribuinte" aria-label="Nome do contribuinte" value="<%= isencao.nome %>">
                 </div>
             </div>
 
             <div class="col-md-2">
-                <div class="d-flex mt-2 mb-3 justify-content-around">
-                    <div class="form-check px-4 justify-items-start">
-                        <input class="form-check-input" type="radio" name="masculino" id="RadioButton3">
-                        <label class="form-check-label text-white" for="RadioButton3">
-                            Masculino
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="feminino" id="RadioButton4">
-                        <label class="form-check-label text-white" for="RadioButton4">
-                            Feminino
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 ano">
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Ano Isenção</span>
-                    <input type="text" class="form-control" id="input-ano" name="anoIsencao" placeholder="Ano" aria-label="Ano Isenção">
-                </div>
-            </div>
-
-            <div class="col-md-4 telefone">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon2">Telefone</span>
-                    <input type="text" class="form-control" id="input-telefone" name="telefone" placeholder="Telefone do Contribuinte" aria-label="Telefone">
-                </div>
-            </div>
-            <div class="col-md-4 cpf">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">CPF</span>
-                    <input type="text" class="form-control" id="input-cpf-declaracao" name="cpf" placeholder="Certidão de Pessoa Fisica" aria-label="CPF">
-                </div>
-            </div>
-            <div class="col-md-4 rg">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">RG</span>
-                    <input type="text" class="form-control" id="input-rg-declaracao" name="rg" placeholder="Registro Geral" aria-label="RG">
-                </div>
-            </div>
-            <div class="col-md-8 endereco">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">Endereço</span>
-                    <input type="text" class="form-control" id="input-endereco" name="endereco" placeholder="Endereço" aria-label="Endereço">
-                </div>
-            </div>
-            <div class="col-md-4 cad-imob">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon4">Cadastro Imob.</span>
-                    <input type="text" class="form-control" id="input-cadastro-imob" name="cadImob" placeholder="Cadastro Imobiliario" aria-label="Cadastro Imobiliario">
-                </div>
-            </div>
-
-            <div class="col-md-4 tipo-beneficio">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon5">tipo-beneficio</span>
-                    <input type="text" class="form-control" id="input-tipo-beneficio" name="tipoBeneficio" placeholder="tipo do beneficio" aria-label="tipo do beneficio">
-                </div>
-            </div>
-            <div class="col-md-4 valor-beneficio">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon6">Valor</span>
-                    <input type="text" class="form-control" id="input-valor-beneficio" name="valorBeneficio" placeholder="Valor do beneficio" aria-label="valor do beneficio">
-                </div>
-            </div>
-            <div class="col-md-4 estado-civil">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon7">Estado civil</span>
-                    <input type="text" class="form-control" id="input-estado-civil" name="estadoCivil" placeholder="Casado / Solteiro / Viúvo" aria-label="estado civil">
-                </div>
-            </div>
-            <div class="col-md-4 conjuge-ben">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon8">conjuge recebe beneficio?</span>
-                    <input type="text" class="form-control" id="input-conjuge-ben" name="conjugeBeneficio" placeholder="Se sim, colocar valor" aria-label="conjuge recebe beneficio?">
-                </div>
-            </div>
-            <div class="col-md-2 unico-imovel">
-                <div class="input-group mb-3">
-                    <select class="form-select" id="inputGroupSelect1" name="unicoImovel">
-                        <option selected>Unico imovel?</option>
-                        <option value="1">Sim</option>
-                        <option value="2">Não</option>
+                    <select class="form-select" id="inputGroupSelect2" name="sexo">
+                        <option selected>Sexo</option>
+                        <option value="1">Masculino</option>
+                        <option value="2">Feminino</option>
                     </select>
                 </div>
             </div>
-            <div class="col-md-2 imovel-debito">
+
+            <div class="col-md-6 cpf">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">CPF</span>
+                    <input type="text" class="form-control" id="input-cpf-declaracao" name="cpf" placeholder="Certidão de Pessoa Fisica" aria-label="CPF" value="<%= isencao.cpf %>>
+                </div>
+            </div>
+
+            <div class="col-md-6 rg">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">RG</span>
+                    <input type="text" class="form-control" id="input-rg-declaracao" name="rg" placeholder="Registro Geral" aria-label="RG" value="<%= isencao.rg %>>
+                </div>
+            </div>
+
+            <div class="col-md-6 estado-civil">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon7">Estado civil</span>
+                    <input type="text" class="form-control" id="input-estado-civil" name="estadoCivil" placeholder="Casado / Solteiro / Viúvo" aria-label="estado civil" value="<%= isencao.estadoCivil %>>
+                </div>
+            </div>
+
+            <div class="col-md-6 telefone">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">Telefone</span>
+                    <input type="text" class="form-control" id="input-telefone" name="telefone" placeholder="Telefone do Contribuinte" aria-label="Telefone" value="<%= isencao.telefone %>>
+                </div>
+            </div>
+            <!--Fim dados Pessoais-->
+
+            <hr>
+            
+            <!--Imóvel-->
+            <p class="text-white">Dados do Imóvel</p>
+            <div class="col-md-9 endereco">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">Endereço</span>
+                    <input type="text" class="form-control" id="input-endereco" name="endereco" placeholder="Nome da rua/avenida/travessa, número e bairro" aria-label="Endereço" value="<%= isencao.endereco %>>
+                </div>
+            </div>
+
+            <div class="col-md-3 cad-imob">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon4">Cadastro Imob.</span>
+                    <input type="text" class="form-control" id="input-cadastro-imob" name="cadImob" placeholder="Cadastro Imobiliario" aria-label="Cadastro Imobiliario value="<%= isencao.cadImob %>">
+                </div>
+            </div>
+
+            <div class="col-md-9 imovel-debito">
                 <div class="input-group mb-3">
                     <select class="form-select" id="inputGroupSelect2" name="possuiDebito">
                         <option selected>Imóvel possui débitos?</option>
@@ -122,13 +79,26 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-4 imovel-debito-desc">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon9">Débitos</span>
-                <input type="text" class="form-control" id="input-debito-desc" name="debitos" placeholder="Se possuir débitos, descreva:" aria-label="Débitos">
+
+            <div class="col-md-3 imovel-debito-desc">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon9">Débitos</span>
+                    <input type="text" class="form-control" id="input-debito-desc" name="debitos" placeholder="Se possuir débitos, descreva:" aria-label="Débitos" value="<%= isencao.debitos %>>
+                </div>
             </div>
-        </div>
-            <div class="col-md-2 reside-imovel">
+
+            <div class="col-md-12 unico-imovel">
+                <div class="input-group mb-3">
+                    <select class="form-select" id="inputGroupSelect1" name="unicoImovel">
+                        <option selected>Unico imovel?</option>
+                        <option value="1">Sim</option>
+                        <option value="2">Não</option>
+                    </select>
+                </div>
+            </div>
+            
+            
+            <div class="col-md-12 reside-imovel">
                 <div class="input-group mb-3">
                     <select class="form-select" id="inputGroupSelect3" name="resideImovel">
                         <option selected>Reside no imóvel?</option>
@@ -136,20 +106,60 @@
                         <option value="2">Não</option>
                     </select>
                 </div>
-            </div>        
+            </div> 
+
+            <!--Fim dados Imóvel-->
+
+            <hr>
+            
+            <!--Isenção-->
+            <p class="text-white">Dados da Isenção</p>
+            <div class="col-md-9 tipo-beneficio">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon5">Tipo do beneficio</span>
+                    <input type="text" class="form-control" id="input-tipo-beneficio" name="tipoBeneficio" placeholder="Aposentado, Pensionista, BPC, Auxilio" aria-label="tipo do beneficio" value="<%= isencao.tipoBeneficio %>>
+                </div>
+            </div>
+            <div class="col-md-3 valor-beneficio">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon6">Valor (R$)</span>
+                    <input type="text" class="form-control" id="input-valor-beneficio" name="valorBeneficio" placeholder="Valor do beneficio" aria-label="valor do beneficio" value="<%= isencao.valorBeneficio%>>
+                </div>
+            </div>
+            
+            <div class="col-md-12 conjuge-ben">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon8">Conjuge recebe beneficio?</span>
+                    <input type="text" class="form-control" id="input-conjuge-ben" name="conjugeBeneficio" placeholder="Se sim, colocar valor" aria-label="Conjuge recebe beneficio?" value="<%= isencao.conjugeBeneficio %>>
+                </div>
+            </div>
+                
+            <div class="col-md-12 ano">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Ano Isenção</span>
+                    <input type="text" class="form-control" id="input-ano" name="anoIsencao" placeholder="Ano" aria-label="Ano Isenção" value="<%= isencao.anoIsencao %>>
+                </div>
+            </div>
+
+            <div class="col-md-12 parecer-assistencia">
+                <div class="input-group mb-3">
+                    <select class="form-select" id="inputGroupSelect4" name="parecer">
+                        <option selected>Parecer da Assistencia</option>
+                        <option value="1">Em análise</option>
+                        <option value="2">Deferido</option>
+                        <option value="3">Indeferido</option>
+                    </select>
+                </div>
+            </div> 
+             <!--Fim dados Isenção-->     
         </div>
 
-        <!--BAIXA RENDA INPUTS--> 
-        <div class="row">
-            <div class="col-md-3"></div>
-        </div>
-
-
-
+           
+        
         <div class="row">
             <div class="col-md-3 documentos-entregues mt-3 pt-3">
                 <div class="input-group mb-3">
-                    <select class="form-select" id="inputGroupSelect4">
+                    <select class="form-select" id="inputGroupSelect4" name="docsEntregue">
                         <option selected>Todos documentos entregues?</option>
                         <option value="1">Sim</option>
                         <option value="2">Não</option>
@@ -192,7 +202,6 @@
         <button class="btn btn-secondary" type="submit">Voltar</button>
     </form>
 </div> 
-
  
 <%- include ('footer'); %>
     <script
